@@ -18,16 +18,16 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-hoi {}, my name is {}! if you have any questions about how to use me please give me /help... 
+Hi,  Min hman dun tur i hriat duh chuan help tih hi click mai rawh aw. /help... 
 
-im a group manager bot maintained by  [this person](tg://user?id={}).
+kei hi group enkawl puitu bot ka ni e. [this person](tg://user?id={}).
 
-My future updates will be put into This Channel - @MarieChechi & My Support Group @InFoTelGroup.
+My future updates will be put into This Channel - @mizolibrary & My Support Group @rsrmusicofficial.
 
-This is my [Deploy Code](https://heroku.com/deploy?template=https://github.com/TGExplore/Marie-2.0-English),
+This is my [Deploy Code](https://heroku.com/deploy?template=https://heroku.com/deploy?template=https://github.com/TGExplore/Marie-2.0-English),
 you can create clone same like me..
 
-For more commands click /help...
+Ka hna thawh dan i hriat duh chuan help click rawh. /help...
 
 **Keep in mind that any changes you DO do to the source have to be on github, as per the license.**
 
@@ -35,25 +35,21 @@ For more commands click /help...
 
 HELP_STRINGS = """
 
-Hello! my name *{}*.
+Hello! ka hming chu *{}*.
 
-*Main* available commands:
- - /start: Start the bot...
- - /help: help....
- - /donate: To find out more about donating!
- - /settings:
-   - in PM: To find out what SETTINGS you have set....
-   - in a group:
+*Main* Command pawimawh te:
+ - /start: Hnathawk tur a min tih nun na.
+ - /help: Min hmandan tur i hriat theih nan.
+ - /donate: Itan ka tangkai ve anih a,thilpek min pek ve theih na!
+ - /settings: i duhdan a mins et na tur
+
+
 
 {}
 And the following:
-""".format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll of the following commands  / or ! can  be used...\n")
+""".format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nComamnd zawng zawng kha hemi hian bultan tur  / emaw ! heihi a hman theih...\n")
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
-It took lots of work for [my creator](t.me/SonOfLars) to get me to where I am now, and every donation helps \
-motivate him to make me even better. All the donation money will go to a better VPS to host me, and/or beer \
-(see his bio!). He's just a poor student, so every little helps!
-There are two ways of paying him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
+DONATE_STRING = """Itan ka lo tangkai ve chuan ka tan thilpek i phal ang zah zah😊; [PayPal](paypal.me/rickyzote)."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -74,7 +70,7 @@ for module_name in ALL_MODULES:
     if not imported_module.__mod_name__.lower() in IMPORTED:
         IMPORTED[imported_module.__mod_name__.lower()] = imported_module
     else:
-        raise Exception("Can't have two modules with the same name! Please change one")
+        raise Exception("Hming in ang in Module dang a neih theih loh! Pakhat zawk thlak rawh")
 
     if hasattr(imported_module, "__help__") and imported_module.__help__:
         HELPABLE[imported_module.__mod_name__.lower()] = imported_module
@@ -116,7 +112,7 @@ def send_help(chat_id, text, keyboard=None):
 def test(bot: Bot, update: Update):
     # pprint(eval(str(update)))
     # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
-    update.effective_message.reply_text("This person edited a message")
+    update.effective_message.reply_text("Heihian message a edit")
     print(update.effective_message)
 
 
@@ -145,7 +141,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN)
     else:
-        update.effective_message.reply_text("waked up😏😏😏")
+        update.effective_message.reply_text("tho rawh😏😏😏")
 
 
 # for test purposes
@@ -217,11 +213,11 @@ def help_button(bot: Bot, update: Update):
         bot.answer_callback_query(query.id)
         query.message.delete()
     except BadRequest as excp:
-        if excp.message == "Message is not modified":
+        if excp.message == "Message a in siam danglam lo":
             pass
         elif excp.message == "Query_id_invalid":
             pass
-        elif excp.message == "Message can't be deleted":
+        elif excp.message == "Message a in delete theilo":
             pass
         else:
             LOGGER.exception("Exception in help buttons. %s", str(query.data))
@@ -235,7 +231,7 @@ def get_help(bot: Bot, update: Update):
     # ONLY send help in PM
     if chat.type != chat.PRIVATE:
 
-        update.effective_message.reply_text("Contact me in PM to get the list of possible commands.",
+        update.effective_message.reply_text("Min rawn PM la hna ka thawk thei ang",
                                             reply_markup=InlineKeyboardMarkup(
                                                 [[InlineKeyboardButton(text="Help",
                                                                        url="t.me/{}?start=help".format(
@@ -333,11 +329,11 @@ def settings_button(bot: Bot, update: Update):
         bot.answer_callback_query(query.id)
         query.message.delete()
     except BadRequest as excp:
-        if excp.message == "Message is not modified":
+        if excp.message == "Message a in siam danglam lo":
             pass
         elif excp.message == "Query_id_invalid":
             pass
-        elif excp.message == "Message can't be deleted":
+        elif excp.message == "Message a in delete theilo":
             pass
         else:
             LOGGER.exception("Exception in settings buttons. %s", str(query.data))
@@ -374,8 +370,8 @@ def donate(bot: Bot, update: Update):
     if chat.type == "private":
         update.effective_message.reply_text(DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
-        if OWNER_ID != 254318997 and DONATION_LINK:
-            update.effective_message.reply_text("You can also donate to the person currently running me "
+        if OWNER_ID != 1371279338 and DONATION_LINK:
+            update.effective_message.reply_text("Tangkai min tih chuan ka tan i phal tawk min pe thei e."
                                                 "[here]({})".format(DONATION_LINK),
                                                 parse_mode=ParseMode.MARKDOWN)
 
@@ -383,9 +379,9 @@ def donate(bot: Bot, update: Update):
         try:
             bot.send_message(user.id, DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
-            update.effective_message.reply_text("I've PM'ed you about donating to my creator!")
+            update.effective_message.reply_text("Donation thawn ani")
         except Unauthorized:
-            update.effective_message.reply_text("Contact me in PM first to get donation information.")
+            update.effective_message.reply_text("Donation tihnan min rawn PM thei ang.")
 
 
 def migrate_chats(bot: Bot, update: Update):
