@@ -22,7 +22,7 @@ Hi,  Min hman dun tur i hriat duh chuan help tih hi click mai rawh aw. /help...
 
 kei hi group enkawl puitu bot ka ni e. [this person](tg://user?id={}).
 
-My future updates will be put into This Channel - @mizolibrary & My Support Group @rsrmusicofficial.
+Support Channel - @mizolibrary & Support Group @mp3andvideodownloader.
 
 This is my [Deploy Code](https://heroku.com/deploy?template=https://heroku.com/deploy?template=https://github.com/TGExplore/Marie-2.0-English),
 you can create clone same like me..
@@ -41,7 +41,7 @@ Hello! ka hming chu *{}*.
  - /start: Hnathawk tur a min tih nun na.
  - /help: Min hmandan tur i hriat theih nan.
  - /donate: Itan ka tangkai ve anih a,thilpek min pek ve theih na!
- - /settings: i duhdan a mins et na tur
+ - /settings: i duhdan a min set na tur
 
 
 
